@@ -21,7 +21,7 @@ const Header = () => {
 
         <Link href="/">
           <h1 className='font-bold text-2xl pl-1 hover:tracking-widest duration-300 cursor-pointer'>
-            GESTOR <span className='text-purple-900'>ONE</span>
+            GESTOR <span className='text-purple-800'>ONE</span>
           </h1>
         </Link>
 
