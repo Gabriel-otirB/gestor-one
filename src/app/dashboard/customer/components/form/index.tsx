@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '@/components/input';
+import { api } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
 const schema = z.object({
   name: z.string().min(1, "O campo nome é obrigatório."),
@@ -18,14 +20,24 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const handleRegisterCustomer = (data: FormData) => {
-  console.log(data);
-}
-
-const NewCustomerForm = () => {
+const NewCustomerForm = ({ userId }: { userId: string }) => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema)
   })
+
+  const router = useRouter();
+
+  const handleRegisterCustomer = async (data: FormData) => {
+    await api.post('/api/customer', {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      userId: userId
+    });
+
+    router.replace("/dashboard/customer");
+  }
 
   return (
     <form className='flex flex-col mt-6' onSubmit={handleSubmit(handleRegisterCustomer)}>
@@ -78,7 +90,7 @@ const NewCustomerForm = () => {
 
       <button
         type='submit'
-        className='bg-purple-700 my-4 px-2 h-11 rounded text-white font-bold'
+        className='bg-purple-700 my-4 px-2 h-11 rounded text-white font-bold cursor-pointer'
       >
         Cadastrar
       </button>
