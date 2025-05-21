@@ -36,6 +36,7 @@ const NewCustomerForm = ({ userId }: { userId: string }) => {
       userId: userId
     });
 
+    router.refresh();
     router.replace("/dashboard/customer");
   }
 
