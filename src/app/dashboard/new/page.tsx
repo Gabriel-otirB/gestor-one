@@ -1,7 +1,25 @@
 import Container from '@/components/container';
 import Link from 'next/link';
 
-const NewTicket = () => {
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { redirect } from 'next/navigation';
+import prismaClient from '@/lib/prisma';
+
+const NewTicket = async () => {
+
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    redirect("/");
+  }
+
+  const customers = await prismaClient.customer.findMany({
+    where: {
+      userId: session.user.id
+    }
+  })
+
   return (
     <Container>
       <main className='mt-9 mb-2'>
@@ -28,10 +46,40 @@ const NewTicket = () => {
             required
           ></textarea>
 
-          <label className='mb-1 font-medium text-lg'>Selecione um cliente</label>
-          <select className='w-full border-2 rounded-md h-11 px-2 mb-2 resize-none bg-white'>
-            <option value="client1">Cliente 1</option>
-          </select>
+          {customers.length !== 0 && (
+            <>
+              <label className='mb-1 font-medium text-lg'>Selecione um cliente</label>
+              <select className='w-full border-2 rounded-md h-11 px-2 mb-2 resize-none bg-white'>
+                {customers.map(customer => (
+                  <option
+                    key={customer.id}
+                    value={customer.id}>
+                    {customer.name}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+
+          {customers.length === 0 && (
+            <Link href="/dashboard/customer/new">
+              Você ainda não possui nenhum cliente cadastrado.
+              <span className='text-purple-700 cursor-pointer hover:underline'>
+                Clique aqui para cadastrar.
+              </span>
+            </Link>
+          )}
+
+          <button
+            type='submit'
+            className='
+          bg-purple-700 px-2 h-11 text-white font-bold rounded-md my-4 
+          cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
+            disabled={customers.length === 0}
+          >
+            Cadastrar
+          </button>
+
         </form>
 
       </main>
