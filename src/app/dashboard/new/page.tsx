@@ -20,6 +20,31 @@ const NewTicket = async () => {
     }
   })
 
+  const handleRegisterTicket = async (formData: FormData) => {
+    "use server"
+
+    const name = formData.get('name') as string;
+    const description = formData.get('description') as string;
+    const customerId = formData.get('customer') as string;
+
+    if (!name || !description || !customerId) {
+      return;
+    }
+
+    await prismaClient.ticket.create({
+      data: {
+        name: name as string,
+        description: description as string,
+        customerId: customerId as string,
+        status: "ABERTO",
+        userId: session.user.id
+      }
+    })
+
+    redirect("/dashboard");
+
+  }
+
   return (
     <Container>
       <main className='mt-9 mb-2'>
@@ -30,13 +55,14 @@ const NewTicket = async () => {
           <h1 className='text-3xl font-bold'>Novo chamado</h1>
         </div>
 
-        <form className='flex flex-col mt-6'>
+        <form className='flex flex-col mt-6' action={handleRegisterTicket}>
           <label className='mb-1 font-medium text-lg'>Nome do chamado</label>
           <input
             className='w-full border-2 rounded-md h-11 px-2 mb-2'
             type="text"
             placeholder='Digite o nome do chamado'
             required
+            name='name'
           />
 
           <label className='mb-1 font-medium text-lg'>Descreva o problema</label>
@@ -44,12 +70,15 @@ const NewTicket = async () => {
             className='w-full border-2 rounded-md h-24 px-2 mb-2 resize-none'
             placeholder='Descreva o problema...'
             required
+            name='description'
           ></textarea>
 
           {customers.length !== 0 && (
             <>
               <label className='mb-1 font-medium text-lg'>Selecione um cliente</label>
-              <select className='w-full border-2 rounded-md h-11 px-2 mb-2 resize-none bg-white'>
+              <select
+                className='w-full border-2 rounded-md h-11 px-2 mb-2 resize-none bg-white'
+                name='customer'>
                 {customers.map(customer => (
                   <option
                     key={customer.id}
