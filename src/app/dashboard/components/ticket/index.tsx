@@ -1,27 +1,34 @@
+import { CustomerProps } from '@/utils/customer.type';
+import { TicketProps } from '@/utils/ticket.type';
 import { FiTrash2, FiFile } from 'react-icons/fi';
 
-const TicketItem = () => {
+interface TicketItemProps {
+  ticket: TicketProps;
+  customer: CustomerProps | null;
+}
+
+const TicketItem = ({ customer, ticket }: TicketItemProps) => {
   return (
     <>
       <tr className='border-b border-b-slate-200 h-16 last:border-b-0 bg-slate-100 hover:bg-slate-200 duration-300'>
         <td className='text-left pl-1'>
-          Mercado Pago
+          {customer?.name}
         </td>
 
         <td className='text-left hidden sm:table-cell'>
-          01/24/2023
+          {customer?.created_at?.toLocaleDateString('pt-BR')}
         </td>
 
         <td className='text-left'>
-          <span className='bg-green-500 px-2 py-1 rounded'>ABERTO</span>
+          <span className='bg-green-500 px-2 py-1 rounded'>{ticket.status}</span>
         </td>
 
         <td className='text-left'>
           <button className='cursor-pointer mr-2'>
-            <FiTrash2 size={24} color='#EF4444'/>
+            <FiTrash2 size={24} color='#EF4444' />
           </button>
           <button className='cursor-pointer'>
-            <FiFile size={24} color='#3b82f6'/>
+            <FiFile size={24} color='#3b82f6' />
           </button>
         </td>
       </tr>
