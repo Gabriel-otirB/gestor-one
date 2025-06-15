@@ -2542,6 +2542,8 @@ export namespace Prisma {
     name: string | null
     description: string | null
     status: string | null
+    created_at: Date | null
+    updated_at: Date | null
     customerId: string | null
     userId: string | null
   }
@@ -2551,6 +2553,8 @@ export namespace Prisma {
     name: string | null
     description: string | null
     status: string | null
+    created_at: Date | null
+    updated_at: Date | null
     customerId: string | null
     userId: string | null
   }
@@ -2560,6 +2564,8 @@ export namespace Prisma {
     name: number
     description: number
     status: number
+    created_at: number
+    updated_at: number
     customerId: number
     userId: number
     _all: number
@@ -2571,6 +2577,8 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    created_at?: true
+    updated_at?: true
     customerId?: true
     userId?: true
   }
@@ -2580,6 +2588,8 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    created_at?: true
+    updated_at?: true
     customerId?: true
     userId?: true
   }
@@ -2589,6 +2599,8 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    created_at?: true
+    updated_at?: true
     customerId?: true
     userId?: true
     _all?: true
@@ -2671,6 +2683,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at: Date | null
+    updated_at: Date | null
     customerId: string | null
     userId: string
     _count: TicketCountAggregateOutputType | null
@@ -2697,6 +2711,8 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     customerId?: boolean
     userId?: boolean
     customer?: boolean | Ticket$customerArgs<ExtArgs>
@@ -2710,11 +2726,13 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     status?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     customerId?: boolean
     userId?: boolean
   }
 
-  export type TicketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "customerId" | "userId", ExtArgs["result"]["ticket"]>
+  export type TicketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "created_at" | "updated_at" | "customerId" | "userId", ExtArgs["result"]["ticket"]>
   export type TicketInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | Ticket$customerArgs<ExtArgs>
     User?: boolean | Ticket$UserArgs<ExtArgs>
@@ -2731,6 +2749,8 @@ export namespace Prisma {
       name: string
       description: string
       status: string
+      created_at: Date | null
+      updated_at: Date | null
       customerId: string | null
       userId: string
     }, ExtArgs["result"]["ticket"]>
@@ -3131,6 +3151,8 @@ export namespace Prisma {
     readonly name: FieldRef<"Ticket", 'String'>
     readonly description: FieldRef<"Ticket", 'String'>
     readonly status: FieldRef<"Ticket", 'String'>
+    readonly created_at: FieldRef<"Ticket", 'DateTime'>
+    readonly updated_at: FieldRef<"Ticket", 'DateTime'>
     readonly customerId: FieldRef<"Ticket", 'String'>
     readonly userId: FieldRef<"Ticket", 'String'>
   }
@@ -8790,6 +8812,8 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     status: 'status',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
     customerId: 'customerId',
     userId: 'userId'
   };
@@ -9034,6 +9058,8 @@ export namespace Prisma {
     name?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     status?: StringFilter<"Ticket"> | string
+    created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
     userId?: StringFilter<"Ticket"> | string
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
@@ -9045,6 +9071,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     customerId?: SortOrder
     userId?: SortOrder
     customer?: CustomerOrderByWithRelationInput
@@ -9059,6 +9087,8 @@ export namespace Prisma {
     name?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     status?: StringFilter<"Ticket"> | string
+    created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
     userId?: StringFilter<"Ticket"> | string
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
@@ -9070,6 +9100,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     customerId?: SortOrder
     userId?: SortOrder
     _count?: TicketCountOrderByAggregateInput
@@ -9085,6 +9117,8 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Ticket"> | string
     description?: StringWithAggregatesFilter<"Ticket"> | string
     status?: StringWithAggregatesFilter<"Ticket"> | string
+    created_at?: DateTimeNullableWithAggregatesFilter<"Ticket"> | Date | string | null
+    updated_at?: DateTimeNullableWithAggregatesFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableWithAggregatesFilter<"Ticket"> | string | null
     userId?: StringWithAggregatesFilter<"Ticket"> | string
   }
@@ -9531,6 +9565,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customer?: CustomerCreateNestedOneWithoutTicketsInput
     User?: UserCreateNestedOneWithoutTicketsInput
   }
@@ -9540,6 +9576,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customerId?: string | null
     userId: string
   }
@@ -9548,6 +9586,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customer?: CustomerUpdateOneWithoutTicketsNestedInput
     User?: UserUpdateOneWithoutTicketsNestedInput
   }
@@ -9556,6 +9596,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -9565,6 +9607,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customerId?: string | null
     userId: string
   }
@@ -9573,12 +9617,16 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TicketUncheckedUpdateManyInput = {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -10111,6 +10159,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     customerId?: SortOrder
     userId?: SortOrder
   }
@@ -10120,6 +10170,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     customerId?: SortOrder
     userId?: SortOrder
   }
@@ -10129,6 +10181,8 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     customerId?: SortOrder
     userId?: SortOrder
   }
@@ -11092,6 +11146,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     User?: UserCreateNestedOneWithoutTicketsInput
   }
 
@@ -11100,6 +11156,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     userId: string
   }
 
@@ -11173,6 +11231,8 @@ export namespace Prisma {
     name?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     status?: StringFilter<"Ticket"> | string
+    created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
+    updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
     userId?: StringFilter<"Ticket"> | string
   }
@@ -11405,6 +11465,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customer?: CustomerCreateNestedOneWithoutTicketsInput
   }
 
@@ -11413,6 +11475,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customerId?: string | null
   }
 
@@ -11811,6 +11875,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     userId: string
   }
 
@@ -11818,6 +11884,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     User?: UserUpdateOneWithoutTicketsNestedInput
   }
 
@@ -11825,6 +11893,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -11832,6 +11902,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -11874,6 +11946,8 @@ export namespace Prisma {
     name: string
     description: string
     status: string
+    created_at?: Date | string | null
+    updated_at?: Date | string | null
     customerId?: string | null
   }
 
@@ -11984,6 +12058,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customer?: CustomerUpdateOneWithoutTicketsNestedInput
   }
 
@@ -11991,6 +12067,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -11998,6 +12076,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

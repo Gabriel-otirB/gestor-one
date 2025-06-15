@@ -30,10 +30,12 @@ model Customer {
 }
 
 model Ticket {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
   status      String
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
 
   customerId String?   @db.ObjectId
   customer   Customer? @relation(fields: [customerId], references: [id])

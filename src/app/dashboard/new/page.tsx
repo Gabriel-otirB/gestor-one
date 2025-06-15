@@ -37,7 +37,8 @@ const NewTicket = async () => {
         description: description as string,
         customerId: customerId as string,
         status: "ABERTO",
-        userId: session.user.id
+        userId: session.user.id,
+        created_at: new Date()
       }
     })
 

@@ -43,7 +43,7 @@ const TicketItem = ({ customer, ticket }: TicketItemProps) => {
         </td>
 
         <td className='text-left hidden sm:table-cell'>
-          {customer?.created_at?.toLocaleDateString('pt-BR')}
+          {ticket?.created_at?.toLocaleDateString('pt-BR')}
         </td>
 
         <td className='text-left'>
