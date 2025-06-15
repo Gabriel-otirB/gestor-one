@@ -3,9 +3,10 @@
 import Input from '@/components/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { FiSearch } from 'react-icons/fi';
+import { Form, useForm } from 'react-hook-form';
+import { FiSearch, FiX } from 'react-icons/fi';
 import { z } from 'zod';
+import FormTicket from './components/form-ticket';
 
 const schema = z.object({
   email: z.string().email("Digite o e-mail do cliente.").min(1, "O campo email é obrigatório."),
@@ -25,14 +26,22 @@ const OpenTicket = () => {
     resolver: zodResolver(schema)
   })
 
+  function handleClearCustomer() {
+    setCustomer(null);
+    setValue('email', '');
+  }
+
   return (
     <div className='w-full max-w-2xl mx-auto px-2'>
       <h1 className='font-bold text-3xl text-center mt-24'>Abrir chamado</h1>
 
       <main className='flex flex-col mt-4 mb-2'>
         {customer ? (
-          <div>
-
+          <div className='bg-slate-200 py-6 px-2 rounded border-2 flex items-center justify-between'>
+            <p className='text-lg'><strong>Cliente selecionado:</strong> {customer.name}</p>
+            <button className='h-11 px-2 flex items-center justify-center rounded cursor-pointer' onClick={handleClearCustomer}>
+              <FiX size={30} color='#ff2929' />
+            </button>
           </div>
         ) : (
           <form className='bg-slate-200 py-6 px-2 rounded border-2'>
@@ -45,18 +54,15 @@ const OpenTicket = () => {
                 register={register}
               />
 
-              <button
-                className='
-            bg-blue-500 flex flex-row gap-3 px-2
-             h-11 items-center justify-center rounded
-             text-white font-bold
-             '>
+              <button className='bg-blue-500 flex flex-row gap-3 px-2 h-11 items-center justify-center rounded text-white font-bold'>
                 Procurar cliente
                 <FiSearch size={24} color='#fff' />
               </button>
             </div>
           </form>
         )}
+
+        {customer !== null && <FormTicket />}
       </main>
 
     </div>
