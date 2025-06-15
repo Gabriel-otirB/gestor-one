@@ -2686,7 +2686,7 @@ export namespace Prisma {
     created_at: Date | null
     updated_at: Date | null
     customerId: string | null
-    userId: string
+    userId: string | null
     _count: TicketCountAggregateOutputType | null
     _min: TicketMinAggregateOutputType | null
     _max: TicketMaxAggregateOutputType | null
@@ -2752,7 +2752,7 @@ export namespace Prisma {
       created_at: Date | null
       updated_at: Date | null
       customerId: string | null
-      userId: string
+      userId: string | null
     }, ExtArgs["result"]["ticket"]>
     composites: {}
   }
@@ -9061,7 +9061,7 @@ export namespace Prisma {
     created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
-    userId?: StringFilter<"Ticket"> | string
+    userId?: StringNullableFilter<"Ticket"> | string | null
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
@@ -9090,7 +9090,7 @@ export namespace Prisma {
     created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
-    userId?: StringFilter<"Ticket"> | string
+    userId?: StringNullableFilter<"Ticket"> | string | null
     customer?: XOR<CustomerNullableScalarRelationFilter, CustomerWhereInput> | null
     User?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
@@ -9120,7 +9120,7 @@ export namespace Prisma {
     created_at?: DateTimeNullableWithAggregatesFilter<"Ticket"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableWithAggregatesFilter<"Ticket"> | string | null
-    userId?: StringWithAggregatesFilter<"Ticket"> | string
+    userId?: StringNullableWithAggregatesFilter<"Ticket"> | string | null
   }
 
   export type UserWhereInput = {
@@ -9579,7 +9579,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     updated_at?: Date | string | null
     customerId?: string | null
-    userId: string
+    userId?: string | null
   }
 
   export type TicketUpdateInput = {
@@ -9599,7 +9599,7 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TicketCreateManyInput = {
@@ -9610,7 +9610,7 @@ export namespace Prisma {
     created_at?: Date | string | null
     updated_at?: Date | string | null
     customerId?: string | null
-    userId: string
+    userId?: string | null
   }
 
   export type TicketUpdateManyMutationInput = {
@@ -9628,7 +9628,7 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateInput = {
@@ -11158,7 +11158,7 @@ export namespace Prisma {
     status: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    userId: string
+    userId?: string | null
   }
 
   export type TicketCreateOrConnectWithoutCustomerInput = {
@@ -11234,7 +11234,7 @@ export namespace Prisma {
     created_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"Ticket"> | Date | string | null
     customerId?: StringNullableFilter<"Ticket"> | string | null
-    userId?: StringFilter<"Ticket"> | string
+    userId?: StringNullableFilter<"Ticket"> | string | null
   }
 
   export type CustomerCreateWithoutTicketsInput = {
@@ -11877,7 +11877,7 @@ export namespace Prisma {
     status: string
     created_at?: Date | string | null
     updated_at?: Date | string | null
-    userId: string
+    userId?: string | null
   }
 
   export type TicketUpdateWithoutCustomerInput = {
@@ -11895,7 +11895,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TicketUncheckedUpdateManyWithoutCustomerInput = {
@@ -11904,7 +11904,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateManyUserInput = {
