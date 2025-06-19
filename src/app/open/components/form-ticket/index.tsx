@@ -1,7 +1,11 @@
+"use client";
+
 import Input from '@/components/input'
+import { api } from '@/lib/api';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { CustomerDataInfo } from "../../page"
 
 const schema = z.object({
   name: z.string().min(1, "O campo nome é obrigatório."),
@@ -10,14 +14,26 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-const FormTicket = () => {
+interface FormTicketProps {
+  customer: CustomerDataInfo
+}
+
+const FormTicket = ({ customer }: FormTicketProps) => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema)
   })
 
+  async function handleRegisterTicket(data: FormData) {
+    const response = await api.post("api/ticket", {
+      name: data.name,
+      description: data.description,
+      customerId: customer.id
+    });
+  }
+
   return (
-    <form className='bg-slate-200 mt-6 px-4 py-6 rounded border-2'>
-      <div className='flex flex-col gap-3 mb-1'>
+    <form className='bg-slate-200 mt-6 px-4 py-6 rounded border-2' onSubmit={handleSubmit(handleRegisterTicket)}>
+      <div className='flex flex-col gap-1 mb-1'>
         <div>
           <label className='mb-1 font-medium text-lg'>Nome do chamado</label>
           <Input
@@ -30,14 +46,14 @@ const FormTicket = () => {
         </div>
 
         <div>
-          <label className='mb-1 font-medium text-lg'>Descrição do chamado</label>
+          <label className='font-medium text-lg'>Descrição do chamado</label>
           <textarea
-            className='w-full border-2 rounded-md h-24 resize-none mb-2 px-2 bg-white'
+            className='w-full border-2 rounded-md h-24 resize-none px-2 bg-white'
             placeholder='Digite a descrição do chamado...'
             id='description'
             {...register('description')}
-          ></textarea>
-          {errors.description?.message && <p className='text-red-600 my-1'>{errors.description?.message}</p>}
+            ></textarea>
+            {errors.description?.message && <p className='text-red-600 mb-4'>{errors.description?.message}</p>}
         </div>
       </div>
       <button
