@@ -15,7 +15,7 @@ const Input = ({ name, placeholder, type, register, rules, error }: InputProps) 
   return (
     <>
       <input
-        className='w-full border-2 rounded-md h-11 px-2'
+        className='w-full border-2 rounded-md h-11 px-2 bg-white'
         type={type}
         placeholder={placeholder}
         {...register(name, rules)}

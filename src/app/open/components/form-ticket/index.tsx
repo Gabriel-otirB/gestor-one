@@ -32,7 +32,7 @@ const FormTicket = () => {
         <div>
           <label className='mb-1 font-medium text-lg'>Descrição do chamado</label>
           <textarea
-            className='w-full border-2 rounded-md h-24 resize-none mb-2 px-2'
+            className='w-full border-2 rounded-md h-24 resize-none mb-2 px-2 bg-white'
             placeholder='Digite a descrição do chamado...'
             id='description'
             {...register('description')}
